@@ -1,4 +1,5 @@
 # Bring Crud Example
+This is an example of working bring CRUD appliction.
 
 ## Getting Started
 
