@@ -25,12 +25,12 @@ public class PictureService {
     return res;
   }
 
-  public Picture updatePicture(int id, Picture picture) {
-    Picture sourceImage = pictures.get(id);
+  public Picture updatePicture(Picture picture) {
+    Picture sourceImage = this.getPicture(picture.getId());
     int index = pictures.indexOf(sourceImage);
+    sourceImage.setName(picture.getName());
     sourceImage.setAuthor(picture.getAuthor());
-    sourceImage.setAuthor(picture.getAuthor());
-    pictures.add(index, sourceImage);
+    pictures.set(index, sourceImage);
     return sourceImage;
   }
 

@@ -38,8 +38,8 @@ public class PictureController {
   }
 
   @Put
-  public Picture updatePicture(@RequestParam("id") int id, @RequestBody Picture picture) {
-    return pictureService.updatePicture(id, picture);
+  public Picture updatePicture(@RequestBody Picture picture) {
+    return pictureService.updatePicture(picture);
   }
 
   @Delete
