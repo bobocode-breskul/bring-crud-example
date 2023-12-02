@@ -2,14 +2,21 @@ package com.bring.pictures.service;
 
 import com.bring.pictures.bean.Picture;
 import io.github.bobocodebreskul.context.annotations.BringComponent;
+import io.github.bobocodebreskul.context.annotations.Qualifier;
 import java.util.ArrayList;
 import java.util.List;
 
 @BringComponent
 public class PictureService {
 
+  //this bean registered from configuration and injected with constructor
+  private final String namePrefix;
   private final List<Picture> pictures = new ArrayList<>();
   private int idCounter = 0;
+
+  public PictureService(@Qualifier("namePrefix") String namePrefix) {
+    this.namePrefix = namePrefix;
+  }
 
   public List<Picture> getPictures() {
     return pictures;
@@ -20,7 +27,7 @@ public class PictureService {
   }
 
   public Picture addPicture(Picture picture) {
-    Picture res = new Picture(++idCounter, picture.getName(), picture.getAuthor());
+    Picture res = new Picture(++idCounter, namePrefix + picture.getName(), picture.getAuthor());
     pictures.add(res);
     return res;
   }
